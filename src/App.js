@@ -1,24 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+const Select = (props) => {
+  const options = props.options;
+  const optionList = options.map((element) => 
+    <option value={element} key={element.toString()}>{element}</option>
+  );
+
+  return (
+    <div>
+      <label>{props.name}:</label>
+      <select>
+        {optionList}
+      </select>
+    </div>
+  );
+};
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Select name="Portfolio" options={["Pension", "Endowment"]}></Select>
+      <Select name="Level1" options={["Equity", "Fixed Income", "Cash"]}></Select>
+      <Select name="Level2" options={["Canada", "US", "EAFE", "EM"]}></Select>
     </div>
   );
 }
