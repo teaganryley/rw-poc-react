@@ -1,46 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import PortfolioSelect from './portfolioSelect';
 
+const portfolioOptions = ['pension', 'endowment'];
+const level1Options = ['equity', 'fixed income', 'cash'];
+const level2Options = ['canada', 'us', 'eafe', 'em'];
+
 const PortfolioForm = () => {
-    /*
-    // set state here
-
-    useEffect(() => {
-        //debug
-        alert("you clicked");
-
-        //api call
-    },[]); */
-    
-    const p = ['pension', 'endowment'];
-    const l1 = ['equity', 'fixed income', 'cash'];
-    const l2 = ['canada', 'us', 'eafe', 'em'];
-
-    const [portfolio, setPortfolio] = useState();
-    const [level1, setLevel1] = useState();
-    const [level2, setLevel2] = useState();
-    const [fund, setFund] = useState();
+    const [formState, _setFormState] = useState({});
+    const setFormState = fieldAndValue => _setFormState({...formState, ...fieldAndValue }); 
+    const handleSelect = val => setFormState(val);
 
     return(
         <form>
             <div>
                 <label>
                     Portfolio:
-                    <PortfolioSelect name="portfolio" options={p}/>
+                    <PortfolioSelect field="portfolio" options={portfolioOptions} value={formState.portfolio} onChange={handleSelect }/>
                 </label>
             </div>
 
             <div>
                 <label>
                     Level I:
-                    <PortfolioSelect name="level1" options={l1}/>
+                    <PortfolioSelect field="level1" options={level1Options} value={formState.level1} onChange={handleSelect }/>
                 </label>
             </div>
 
             <div>
                 <label>
                     Level II:
-                    <PortfolioSelect name="level2" options={l2}/>
+                    <PortfolioSelect field="level2" options={level2Options} value={formState.level2} onChange={handleSelect }/>
                 </label>
             </div>
 
