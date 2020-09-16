@@ -1,4 +1,5 @@
 import React from 'react';
+import PortfolioForm from './components/PortfolioForm';
 
 const Select = (props) => {
   const options = props.options;
@@ -19,9 +20,7 @@ const Select = (props) => {
 function App() {
   return (
     <div className="App">
-      <Select name="Portfolio" options={["Pension", "Endowment"]}></Select>
-      <Select name="Level1" options={["Equity", "Fixed Income", "Cash"]}></Select>
-      <Select name="Level2" options={["Canada", "US", "EAFE", "EM"]}></Select>
+      <PortfolioForm></PortfolioForm>
     </div>
   );
 }
