@@ -1,16 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Select } from '@material-ui/core';
+import MenuItem from '@material-ui/core/MenuItem';
+
 
 const PortfolioSelect = ({ options = [], field, value, onChange }) => {
    const handleChange = ({ target }) => onChange ? onChange({ [field]: target.value }): null;
     return (
-        <select value={value} onChange={handleChange} className="portfolio-select">
+        <Select value={value} onChange={handleChange} className="portfolio-select">
             {options.map(item => 
-                <option value={item} key={`field_${item.toString()}`}>
+                <MenuItem value={item} key={`field_${item.toString()}`}>
                     {item}
-                </option>
+                </MenuItem>
             )}
-        </select>
+        </Select>
     );
+};
+
+PortfolioSelect.propTypes = {
+    options: PropTypes.arrayOf(PropTypes.string),
+    field: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    onChange: PropTypes.func.isRequired
 };
 
 export default PortfolioSelect;
