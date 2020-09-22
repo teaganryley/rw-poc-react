@@ -12,8 +12,6 @@ import PortfolioForm from './components/portfolioForm';
   );
 }*/
 
-//TODO: add header!
-
 export default function App() {
   return (
       <Container maxWidth="sm" align="center">
