@@ -29,7 +29,6 @@ const PortfolioForm = () => {
     });
 
     const setFormState = fieldAndValue => _setFormState({...formState, ...fieldAndValue }); 
-    
     const handleSelect = val => setFormState(val);
     const handleTyping = ({ target }) => setFormState({ fund: target.value });
     const handleSubmit = () => {
